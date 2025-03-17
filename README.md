@@ -1,8 +1,8 @@
-               # Telstra-Cybersecurity_Project 
+         # Telstra-Cybersecurity_Project 
 
 
 
-                 Responding to a malware attack 
+          Responding to a malware attack 
 
 
     1 - Here is the background information on your task
@@ -32,68 +32,68 @@
     ********************************************************************************************
 
     
-Incident Postmortem: Firewall and Python Payload Malware Attack
-1. Summary
-On March 20, 2022, at 03:21 UTC, a security incident was detected involving an attempted Remote Code Execution (RCE) attack on a web application. The attack exploited vulnerabilities in the Tomcat server to execute unauthorized commands. The incident was flagged by the firewall's malware detection system, which identified malicious payload patterns.
+    Incident Postmortem: Firewall and Python Payload Malware Attack
 
-Response Teams:
+      1. Summary
+      On March 20, 2022, at 03:21 UTC, a security incident was detected involving an attempted Remote Code Execution (RCE) attack on a web application. The attack               exploited vulnerabilities in the Tomcat server to execute unauthorized commands. The incident was flagged by the firewall's malware detection system, which                identified malicious payload patterns.
 
-Network Administrators
-Cybersecurity Analysts
-Severity: Critical (Potential system compromise)
+    Response Teams:
 
-2. Impact
-The attack attempted to:
-✅ Upload and execute a malicious JSP shell via an RCE exploit.
-✅ Gain unauthorized access to system resources.
-✅ Execute arbitrary commands and escalate privileges.
+    Network Administrators
+    Cybersecurity Analysts
+    Severity: Critical (Potential system compromise)
 
-Although the firewall successfully blocked the attack, repeated attempts caused:
-⚠ Temporary service degradation
-⚠ Increased CPU load due to continuous request filtering
+    2. Impact
+    The attack attempted to:
+    ✅ Upload and execute a malicious JSP shell via an RCE exploit.
+    ✅ Gain unauthorized access to system resources.
+    ✅ Execute arbitrary commands and escalate privileges.
 
-🛑 No data exfiltration or unauthorized access was confirmed. However, the attack exposed weaknesses in system monitoring and response mechanisms.
+    Although the firewall successfully blocked the attack, repeated attempts caused:
+    ⚠ Temporary service degradation
+    ⚠ Increased CPU load due to continuous request filtering
 
-3. Detection
-The firewall’s Intrusion Detection System (IDS) flagged multiple suspicious requests containing malicious payloads, specifically targeting:
-🔎 Parameter: class.module.classLoader.resources.context.parent.pipeline.first.pattern
+    🛑 No data exfiltration or unauthorized access was confirmed. However, the attack exposed weaknesses in system monitoring and response mechanisms.
 
-Security logs revealed multiple failed breach attempts before the attack was mitigated.
+    3. Detection
+    The firewall’s Intrusion Detection System (IDS) flagged multiple suspicious requests containing malicious payloads, specifically targeting:
+    🔎 Parameter: class.module.classLoader.resources.context.parent.pipeline.first.pattern
 
-4. Root Cause
-📌 Unpatched vulnerability in the Tomcat web server allowed exploitation attempts.
-📌 Attack script targeted known weaknesses, injecting malicious payloads to execute commands.
-📌 Inadequate logging and alerting delayed immediate detection of attack severity.
+    Security logs revealed multiple failed breach attempts before the attack was mitigated.
 
-5. Resolution
-✔ Firewall successfully blocked the attack, preventing execution of malicious commands.
-✔ Enhanced firewall rules and detection mechanisms.
-✔ Patched the affected application server to address known vulnerabilities.
-✔ Reviewed system logs to confirm no successful breaches.
-✔ Implemented additional security measures, including:
+    4. Root Cause
+    📌 Unpatched vulnerability in the Tomcat web server allowed exploitation attempts.
+    📌 Attack script targeted known weaknesses, injecting malicious payloads to execute commands.
+    📌 Inadequate logging and alerting delayed immediate detection of attack severity.
 
-Enhanced monitoring
-Rate-limiting of suspicious requests
-6. Action Items
-🔹 Immediate Actions:
-1️⃣ Patch Management: Ensure all application servers and dependencies are up-to-date.
-2️⃣ Firewall Rule Optimization: Improve detection logic for emerging threats.
-3️⃣ Monitoring Enhancement: Deploy advanced security monitoring solutions with real-time alerting.
+    5. Resolution
+    ✔ Firewall successfully blocked the attack, preventing execution of malicious commands.
+    ✔ Enhanced firewall rules and detection mechanisms.
+    ✔ Patched the affected application server to address known vulnerabilities.
+    ✔ Reviewed system logs to confirm no successful breaches.
+    ✔ Implemented additional security measures, including:
 
-🔹 Short-Term Actions:
-4️⃣ Incident Response Training: Train IT teams for faster security alert responses.
-5️⃣ Penetration Testing: Conduct regular security audits to proactively identify vulnerabilities.
+    Enhanced monitoring
+    Rate-limiting of suspicious requests
+    6. Action Items
+    🔹 Immediate Actions:
+    1️⃣ Patch Management: Ensure all application servers and dependencies are up-to-date.
+    2️⃣ Firewall Rule Optimization: Improve detection logic for emerging threats.
+    3️⃣ Monitoring Enhancement: Deploy advanced security monitoring solutions with real-time alerting.
+    
+    🔹 Short-Term Actions:
+    4️⃣ Incident Response Training: Train IT teams for faster security alert responses.
+    5️⃣ Penetration Testing: Conduct regular security audits to proactively identify vulnerabilities.
 
-🔹 Long-Term Actions:
-6️⃣ Logging Improvements: Implement granular logging for extended threat analysis.
+    🔹 Long-Term Actions:
+    6️⃣ Logging Improvements: Implement granular logging for extended threat analysis.
+    
+    7. Conclusion
+    This incident underscores the importance of:
+    ✔ Strong firewall configurations
+    ✔ Proactive security strategies
+    ✔ Continuous monitoring and patch management
+    
+    Although the attack was successfully mitigated, critical improvements are required in monitoring, patch management, and incident response. Moving forward, enhanced security measures will be implemented to fortify defenses against future threats.
 
-7. Conclusion
-This incident underscores the importance of:
-✔ Strong firewall configurations
-✔ Proactive security strategies
-✔ Continuous monitoring and patch management
 
-Although the attack was successfully mitigated, critical improvements are required in monitoring, patch management, and incident response. Moving forward, enhanced security measures will be implemented to fortify defenses against future threats.
-
-Prepared by: [Your Team Name]
-Date: [Report Date]
