@@ -9,6 +9,13 @@ The Telstra Firewall Project is a hands-on learning initiative developed by Tels
 	Develop and implement a new firewall rule using Python to mitigate the malware's impact.
 
 	Draft an incident post-mortem report detailing the malware attack
+
+
+ Task 1: Email to Impacted Team
+
+ <img width="842" alt="Screenshot 2025-03-18 at 10 06 59 AM" src="https://github.com/user-attachments/assets/c8e6e223-4a7e-47da-b3c5-595e2ce84d13" />
+
+
     ********************************************************************************************
 
     
