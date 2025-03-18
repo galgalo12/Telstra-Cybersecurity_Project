@@ -22,8 +22,8 @@ The Telstra Firewall Project is a hands-on learning initiative developed by Tels
 
   Firewall Rule
 
+[T4 - Model Answer.pdf](https://github.com/user-attachments/files/19324453/T4.-.Model.Answer.pdf)
 
-[T4 - Postmortem Template.docx](https://github.com/user-attachments/files/19324448/T4.-.Postmortem.Template.docx)
 
 
 
