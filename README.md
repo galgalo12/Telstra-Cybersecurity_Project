@@ -15,6 +15,16 @@ The Telstra Firewall Project is a hands-on learning initiative developed by Tels
 
  <img width="842" alt="Screenshot 2025-03-18 at 10 06 59 AM" src="https://github.com/user-attachments/assets/c8e6e223-4a7e-47da-b3c5-595e2ce84d13" />
 
+ 	Ref 1: Email send to team that had critical severity impact
+
+
+  ************************************************************************************************
+
+  Firewall Rule
+
+
+
+
 
     ********************************************************************************************
 
