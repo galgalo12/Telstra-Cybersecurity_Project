@@ -20,6 +20,12 @@ The Telstra Firewall Project is a hands-on learning initiative developed by Tels
 
   ************************************************************************************************
 
+
+  (Technical) Mitigate the malware attack = 
+  Ref 3: Python code to implement firewall rule
+
+
+
   Firewall Rule
 
 [T4 - Model Answer.pdf](https://github.com/user-attachments/files/19324453/T4.-.Model.Answer.pdf)
