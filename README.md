@@ -96,10 +96,9 @@ https://github.com/craig/SpringCore0day/blob/main/exp.py
 	    server.server_close()
 	    print("[+] Server terminated. Exiting...")
 	    exit(0)
+    			 Here is the blocked screenshot 
 
-    
-
-
+    <img width="1108" alt="Screenshot 2025-03-18 at 6 25 01 PM" src="https://github.com/user-attachments/assets/57b1c854-c409-4efc-ae83-47b45ff7e347" />
 
 
 
