@@ -25,6 +25,87 @@ The Telstra Firewall Project is a hands-on learning initiative developed by Tels
   Ref 3: Python code to implement firewall rule
 
 
+As part of my participation in the Telstra Virtual Experience Program with Forage, I developed a Python-based firewall rule to mitigate the Spring4Shell vulnerability (CVE-2022-22965) affecting Telstra's nbn services. This vulnerability allows remote code execution (RCE) in Spring MVC or Spring WebFlux applications running on JDK 9+ and deployed on Apache Tomcat as WAR files. 
+GITHUB
+
+To address this, I created a rule within the firewall_server.py script to block:
+
+Incoming traffic to the client request path /tomcatwar.jsp.
+Requests containing patterns identified in the Spring4Shell exploit payload, as detailed in the proof of concept here:
+This approach effectively reduces the risk of exploitation by filtering out malicious requests targeting the vulnerability
+https://github.com/craig/SpringCore0day/blob/main/exp.py
+
+# www.theforage.com - Telstra Cyber Task 3
+# Model Work Example
+# Firewall Server Handler
+
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
+host = "localhost"
+port = 8000
+
+def block_request(self):
+    self.send_error(403, "Request blocked due to firewall")
+
+def handle_request(self):
+    # List of bad headers from the proof of concept payload
+    bad_headers = {
+        "suffix": "%>//",
+        "c1": "Runtime",
+        "c2": "<%",
+        "DNT": "1",
+        "Content-Type": "application/x-www-form-urlencoded",
+    }
+
+    bad_header_keys = bad_headers.keys()
+
+    # If a request is on the Spring Framework path
+    if self.path == "/tomcatwar.jsp":
+        # Iterate through bad headers
+        for bad_header_key in bad_header_keys:
+            # If we find a bad header that matches the malicious payload
+            if bad_header_key in self.headers and self.headers[bad_header_key] == bad_headers[bad_header_key]:
+                # Block request and throw 403 error
+                return block_request(self)
+
+    # Return successful response
+    self.send_response(200)
+    self.send_header("content-type", "application/json")
+    self.end_headers()
+
+    self.wfile.write({ "success": True })
+
+class ServerHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        handle_request(self)
+
+    def do_POST(self):
+        handle_request(self)
+
+
+if __name__ == "__main__":        
+    server = HTTPServer((host, port), ServerHandler)
+    print("[+] Firewall Server")
+    print("[+] HTTP Web Server running on: %s:%s" % (host, port))
+
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        pass
+
+    server.server_close()
+    print("[+] Server terminated. Exiting...")
+    exit(0)
+
+    
+
+
+
+
+
+  
+
+
 
   Firewall Rule
 
