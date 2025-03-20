@@ -159,9 +159,6 @@ The script performs five iterations, each sending a POST request to /tomcatwar.j
 
 
 
-[T4 - Model Answer.pdf](https://github.com/user-attachments/files/19324453/T4.-.Model.Answer.pdf)
-
-
 
 
     ********************************************************************************************
@@ -230,5 +227,7 @@ The script performs five iterations, each sending a POST request to /tomcatwar.j
     ✔ Continuous monitoring and patch management
     
     Although the attack was successfully mitigated, critical improvements are required in monitoring, patch management, and incident response. Moving forward, enhanced security measures will be implemented to fortify defenses against future threats.
+    
+[T4 - Model Answer.pdf](https://github.com/user-attachments/files/19324453/T4.-.Model.Answer.pdf)
 
 
